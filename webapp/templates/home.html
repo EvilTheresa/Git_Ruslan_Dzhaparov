@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Todolist</title>
+</head>
+<body>
+    <h1>Todolist</h1>
+    <tr>
+        <th>Description</th>
+        <th>Status</th>
+        <th>Due Date</th>
+        <th>Actions</th>
+    </tr>
+    {% for task in tasks %}
+    <tr>
+        <td>{{ task.description }}</td>
+        <td>{{ task.get_status_display }}</td>
+        <td>{{ task.due_date }}</td>
+    </tr>
+    {% endfor %}
+</body>
+</html>
