@@ -2,9 +2,12 @@ from django.shortcuts import render, redirect
 from .models import Task
 from .forms import TaskForm
 
+
 def task_list(request):
     tasks = Task.objects.all()
+    print("hello")
     return render(request, 'home.html', {'tasks': tasks})
+
 
 def add_task(request):
     if request.method == 'POST':
