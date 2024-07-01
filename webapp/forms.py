@@ -8,5 +8,5 @@ class TaskForm(forms.ModelForm):
         widgets = {
             'status': forms.Select(choices=STATUS_CHOICES),
             'due_date': forms.DateInput(format='%Y-%m-%d', attrs={'type': 'date'}),
-            'details': forms.Textarea(attrs={'rows':3, 'cols':25})
+            'details': forms.Textarea(attrs={'rows': 3, 'cols': 25})
         }
