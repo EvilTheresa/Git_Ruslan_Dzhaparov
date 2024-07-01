@@ -5,7 +5,8 @@
         "fields": {
             "description": "First task",
             "status": "new",
-            "due_date": "2023-12-31"
+            "due_date": "2023-12-31",
+            "details": "Mama mia"
         }
     },
     {
@@ -14,7 +15,8 @@
         "fields": {
             "description": "Second task",
             "status": "in_progress",
-            "due_date": "2024-01-15"
+            "due_date": "2024-01-15",
+            "details": "Mama mia"
         }
     }
 ]
