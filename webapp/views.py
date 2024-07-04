@@ -23,3 +23,32 @@ def add_task(request):
 def task_detail(request, *args, pk, **kwargs):
     task = get_object_or_404(Task, pk=pk)
     return render(request, "detail_task.html", context={"task": task})
+
+def update_task(request, *args, pk, **kwargs):
+    if request.method == "GET":
+        product = get_object_or_404(Task, pk=pk)
+        form = TaskForm(initial={
+            "Description": product.description,
+            "Status": product.status,
+            "Due date": product.due_date,
+        })
+        return render(
+            request, "update_task.html",
+            context={"form": form}
+        )
+    else:
+        form = TaskForm(data=request.POST)
+        if form.is_valid():
+            task = get_object_or_404(Task, pk=pk)
+            task.description = request.POST.get("Description")
+            task.status = request.POST.get("status")
+            task.due_date = request.POST.get("Due date")
+            task.save()
+            return redirect("task_detail", pk=task.pk)
+        else:
+            print(form.errors)
+            return render(
+                request,
+                "update_task.html",
+                {"form": form}
+            )
