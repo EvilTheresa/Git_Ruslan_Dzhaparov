@@ -1,15 +1,5 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Todolist</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
-    <div class="container">
+{% extends 'base.html' %}
+{% block content %}
         <h1>Task List</h1>
         <a href="{% url 'add_task' %}" class="btn btn-primary">Add Task</a>
         <table class="table">
@@ -18,20 +8,18 @@
                     <th>Description</th>
                     <th>Status</th>
                     <th>Due Date</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
                 {% for task in tasks %}
                 <tr>
-                    <td>{{ task.description }}</td>
+                    <td><a href="{% url 'detail_task' task.pk %}" class="text-decoration-none">{{ task.description }}
+                    </a></td>
                     <td>{{ task.get_status_display }}</td>
                     <td>{{ task.due_date }}</td>
                     <td>
                     </td>
                 </tr>
                 {% endfor %}
-            </tbody>
-        </table>
-    </div>
-</body>
-</html>
+{% endblock %}
